@@ -9,7 +9,6 @@ const secretSchema = new mongoose.Schema(
     expiresAt: {
       type: Date,
       required: true,
-      index: { expires: 0 },
     },
     viewed: {
       type: Boolean,
@@ -21,13 +20,8 @@ const secretSchema = new mongoose.Schema(
   }
 );
 
-// Delete secret after it's viewed
-secretSchema.post("findOne", async function (doc) {
-  if (doc && !doc.viewed) {
-    doc.viewed = true;
-    await doc.deleteOne();
-  }
-});
+// Add index for expiration
+secretSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 const Secret = mongoose.model("Secret", secretSchema);
 
