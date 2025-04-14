@@ -1,6 +1,6 @@
 import { encryptSecret, decryptSecret, generateKey } from "./crypto";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://shhh-secret.onrender.com/api";
 
 export const createSecret = async (
   text: string,
