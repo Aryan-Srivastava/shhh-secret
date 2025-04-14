@@ -1,6 +1,6 @@
 import { encryptSecret, decryptSecret, generateKey } from "./crypto";
 
-const API_URL = "http://localhost:3001/api";
+const API_URL = "https://shhh-secret.onrender.com";
 
 export const createSecret = async (
   text: string,
