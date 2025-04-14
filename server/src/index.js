@@ -6,8 +6,15 @@ const { Secret } = require("./models/Secret");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// CORS configuration
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Connect to MongoDB
@@ -16,10 +23,16 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Routes
+// Root route
+app.get("/", (req, res) => {
+  res.json({ message: "Secret Link API is running" });
+});
+
+// API Routes
 app.post("/api/secrets", async (req, res) => {
   try {
     const { encryptedContent, expiration } = req.body;
+    console.log("Received encryptedContent:", encryptedContent);
 
     if (!encryptedContent || !expiration) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -61,6 +74,7 @@ app.get("/api/secrets/:id", async (req, res) => {
 });
 
 // Start server
-app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

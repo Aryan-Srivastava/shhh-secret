@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<CreateSecret />} />
-          <Route path="/shh/:secretId" element={<ViewSecret />} />
+          <Route path="/shhh/:secretId" element={<ViewSecret />} />
         </Routes>
       </Router>
     </ChakraProvider>

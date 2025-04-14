@@ -237,12 +237,12 @@ const CreateSecret = () => {
                     fontSize="sm"
                     fontFamily="mono"
                   >
-                    https://domain.com/s/
+                    https://domain.com/shhh/
                     <Text as="span" color="blue.400">
                       secretId
                     </Text>
                     #
-                    <Text as="span" color="green.400">
+                    <Text as="span" color="grex`en.400">
                       encryptionKey
                     </Text>
                   </Box>

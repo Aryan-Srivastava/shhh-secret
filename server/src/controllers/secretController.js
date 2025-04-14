@@ -1,4 +1,4 @@
-const Secret = require("../models/Secret");
+const { Secret } = require("../models/Secret");
 const { config } = require("../config");
 
 exports.createSecret = async (req, res) => {

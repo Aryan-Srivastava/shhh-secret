@@ -1,6 +1,6 @@
 import { encryptSecret, decryptSecret, generateKey } from "./crypto";
 
-const API_URL = "https://shhh-secret.onrender.com";
+const API_URL = "http://localhost:3001/api";
 
 export const createSecret = async (
   text: string,
@@ -25,7 +25,7 @@ export const createSecret = async (
   }
 
   const { id } = await response.json();
-  return `${window.location.origin}/shh/${id}#${key}`;
+  return `${window.location.origin}/shhh/${id}#${key}`;
 };
 
 export const getSecret = async (id: string, key: string): Promise<string> => {
