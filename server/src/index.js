@@ -65,12 +65,12 @@ app.post("/api/secrets", async (req, res) => {
     }
 
     // Calculate expiration time
-    const expiresAt = new Date(Date.now() + parseInt(expiration) * 1000);
-    console.log("Creating secret with expiration:", expiresAt);
+    // const expiresAt = new Date(Date.now() + parseInt(expiration) * 1000);
+    // console.log("Creating secret with expiration:", expiresAt);
 
     const secret = new Secret({
       encryptedContent,
-      expiresAt,
+      // expiresAt,
       viewed: false,
     });
 
